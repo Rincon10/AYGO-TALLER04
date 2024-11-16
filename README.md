@@ -276,3 +276,49 @@ si todo sale bien, debemos de ver una salida similar a esta
 ## Implementando una API RESTFUL
 
 ## Creando una API REST
+
+creamos la api WildRydes 
+
+
+Debe crear un autorizador de grupos de usuarios de Amazon Cognito. Amazon API Gateway utiliza tokens web JSON (JWT) que devuelve el grupo de usuarios de Amazon Cognito (creado en el módulo 2) para autenticar las llamadas a la API. En esta sección, crearemos un autorizador para la API, de modo que podamos utilizar el grupo de usuarios.
+
+Siga estos pasos para configurar el autorizador en la consola de Amazon API Gateway:
+
+    1.En el panel de navegación izquierdo de la API de WildRydes que acaba de crear, seleccione Autorizadores.
+    2.Elija Crear nuevo autorizador. 
+    3.Ingrese WildRydes en el campo Nombre del autorizador.
+    4.2Seleccione Cognito como Tipo. 
+    5.En Grupo de usuarios de Cognito, en el menú desplegable Región, seleccione la misma región que ha estado utilizando durante el resto del tutorial. Ingrese WildRydes en el campo de nombre del grupo de usuarios de Cognito. 
+    6.Ingrese Autorización en el Origen de token. 
+    7.Elija Crear.
+    8.Para verificar la configuración del autorizador, seleccione Probar. 
+    9.Pegue el token de autorización copiado de la página web ride.html en la sección Valide su implementación del Módulo 2 en el campo Autorización (encabezado) y verifique que el código de respuesta de estado HTTP sea 200. 
+
+
+![alt text](docs/images/07.png)
+
+
+creando end poind rides con autenticacion
+
+![alt text](docs/images/09.png)
+
+creando stage prod
+
+![alt text](docs/images/08.png)
+
+como esto es ahora un servicio expuesto haremos una prueba sin estar autenticados 
+
+![alt text](docs/images/10.png)
+
+## Ahora hacemos la actualizacion de nuestro archivo config
+
+En este paso, actualizará el archivo /js/config.js en la implementación del sitio web para incluir la URL de invocación de la etapa que acaba de crear. Copiará la URL de invocación directamente de la parte superior de la página del editor de etapas en la consola de Amazon API Gateway y la pegará en la clave invokeUrl del archivo config.js del sitio. El archivo de configuración seguirá conteniendo las actualizaciones que realizó en el módulo anterior para sus valores de userPoolID, userPoolClientID y region de Amazon Cognito.
+
+1. En la máquina local, navegue hasta la carpeta js y abra el archivo config.js en el editor de texto de su elección
+2. Pegue la URL de invocación que copió de la consola de Amazon API Gateway en la sección anterior en el valor de invokeUrl del archivo config.js. 
+3. Guarde el archivo.
+
+el cual quedaria de la siguiente forma
+
+```js
+```
